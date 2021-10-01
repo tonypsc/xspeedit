@@ -21,7 +21,7 @@ function packageOptimized(inputLine, boxsize) {
     inputArray.splice(0, 1); // delete element from array
 
     let j = 0;
-    // go throw the elements left
+    // go throw the elements left in the array
     while (j < inputArray.length) {
       // compare filled size + element size with the size of the box (10)
       if (sizeFilled + inputArray[j] <= boxsize) {
@@ -57,16 +57,17 @@ function package(inputLine, boxsize) {
 
   // go throw all the elements in array
   while (inputArray.length > 0) {
-    // filled size + element size exceeds bos size
+    // filled size + element size exceeds box size
     if (filledSize + inputArray[0] > boxsize) {
-      filledSize = 0;
+      filledSize = 0; // reset box filled size
       result += "/";
     }
 
+    // filled size + element fits in the box
     if (filledSize + inputArray[0] <= boxsize) {
-      filledSize += inputArray[0];
-      result += inputArray[0];
-      inputArray.splice(0, 1);
+      filledSize += inputArray[0]; // update new filled size
+      result += inputArray[0]; // update result
+      inputArray.splice(0, 1); // delete array element
     }
   }
 
